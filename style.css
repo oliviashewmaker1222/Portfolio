@@ -14,25 +14,33 @@ body {
 }
 
 h1,
-h2,
-.nav-logo {
+h2{
     font-family: 'Orbitron', sans-serif;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 
 /* Navigation Bar */
+/* Figure out how to make it fit on screen  like the whole nav bar along with the logo*/
 nav {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: rgba(0, 26, 51, 0.85);;
+    background-color: rgba(0, 26, 51, 0.85);
     border-bottom: 2px solid #00ffff;
     display: flex;
     justify-content: space-between;
     padding: 1rem 5%;
     z-index: 1000;
     backdrop-filter: blur(10px);
+    gap: 1px;
+}
+nav img{
+    width: 70px;
+    height: 70px;
+    z-index: 1001;
+    border-radius: 1000px;
+
 }
 
 nav ul {
