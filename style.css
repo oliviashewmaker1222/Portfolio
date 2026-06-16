@@ -25,8 +25,10 @@ h2{
 nav {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
     background-color: rgba(0, 26, 51, 0.85);
+    box-sizing: border-box;
     border-bottom: 2px solid #00ffff;
     display: flex;
     justify-content: space-between;
@@ -35,12 +37,25 @@ nav {
     backdrop-filter: blur(10px);
     gap: 1px;
 }
-nav img{
+nav .logo{
     width: 70px;
     height: 70px;
     z-index: 1001;
     border-radius: 1000px;
+}
 
+nav .ship{
+    z-index: 1001;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 40px;
+    right: 91%;
+    animation: right 30s;
+    animation-iteration-count: infinite;
 }
 
 nav ul {
@@ -146,4 +161,9 @@ button {
 
 button:hover {
     background-color: #ff9f1c;
+}
+
+@keyframes right {
+  from {left: 0%;}
+  to {left: 100%;}
 }
