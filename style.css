@@ -82,6 +82,7 @@ nav a:hover {
 
 /* Hero Section */
 header {
+    position: relative;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -89,12 +90,54 @@ header {
     align-items: center;
     text-align: center;
     border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+    overflow: hidden;
 }
 
 header h1 {
     font-size: 3.5rem;
     color: #00ffff;
     text-shadow: 0 0 20px #00ffff;
+    font-size: 2rem;
+    position: relative;
+    z-index: 2;
+    transition: all 0.5s ease;
+}
+
+header p{
+    font-size: 25px;
+    position: relative;
+    color: #00ffff;
+    z-index: 2;
+    transition: all 0.5s ease;
+}
+
+header::before,
+header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-radial-gradient(circle at center, #0ff 1px, transparent 2px, transparent 50px);
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+header:not(.frozen):hover h1,
+header:not(.frozen):hover p{
+  transform: scale(1.5) rotate(360deg);
+  opacity: 0;
+}
+
+header:not(.frozen):hover::before {
+  transform: scale(2) rotate(45deg);
+  opacity: 0.3;
+}
+
+header:not(.frozen):hover::after {
+  transform: scale(2) rotate(-45deg);
+  opacity: 0.3;
 }
 
 /* Sections */
