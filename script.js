@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let dots = document.querySelectorAll(".dot-btn"); 
     let curIndex = 0;
     let total = panels.length;
-    let rotSpeed = 3500; 
+    let rotSpeed = 2000; 
     let autoCycleTimer = null; 
 
     function updateCar(index) {

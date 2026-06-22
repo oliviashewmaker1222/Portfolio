@@ -1,4 +1,3 @@
-
 body {
     margin: 0;
     padding: 0;
@@ -15,7 +14,7 @@ body {
 }
 
 h1,
-h2{
+h2 {
     font-family: 'Orbitron', sans-serif;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -38,14 +37,15 @@ nav {
     backdrop-filter: blur(10px);
     gap: 1px;
 }
-nav .logo{
+
+nav .logo {
     width: 70px;
     height: 70px;
     z-index: 1001;
     border-radius: 1000px;
 }
 
-nav .ship{
+nav .ship {
     z-index: 1001;
     width: 100px;
     height: 100px;
@@ -119,7 +119,7 @@ h2 {
 }
 
 /* Projects */
-.projects{
+.projects {
     position: relative;
     padding: 60px 20px;
     width: 100%;
@@ -129,7 +129,11 @@ h2 {
     clear: both;
 }
 
-.my-Carousel{
+.projects h2 {
+    margin-left: 100px;
+}
+
+.my-Carousel {
     perspective: 1000px;
     width: 100%;
     height: 450px;
@@ -140,61 +144,64 @@ h2 {
     align-items: center;
 }
 
-.my-slides{
-    width: 250px;
+.my-slides {
+    width: 300px;
     height: 400px;
     position: relative;
     transform-style: preserve-3d;
 }
 
-.carousel-panel{
-    position: absolute; 
-    width: 100%; 
-    height: 100%; 
-    left: 0; 
-    top: 0; 
-    background-color: #001a33; 
-    border: 1px solid #00ffff; 
-    border-radius: 16px; 
+.my-slides img {
+    width: 100%;
+    height: 250px;
+    border-radius: 16px;
+}
+
+.carousel-panel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: #001a33;
+    border: 1px solid #00ffff;
+    border-radius: 16px;
     padding: 30px;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s, z-index 0.6s;
+    opacity: 0;
+    transform: translateX(0) translateZ(-300px) rotateY(0deg) scale(0.8);
+    backface-visibility: hidden;
     z-index: 0;
-    flex-direction: row;
-    justify-content: space-between;
-    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s, z-index 0.6s; 
-    opacity: 0; 
-    transform: translateX(0) translateZ(-300px) rotateY(0deg) scale(0.8); 
-    backface-visibility: hidden; 
-    z-index: 0; 
-    display: flex; 
-    flex-direction: column; 
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
 }
 
-.carousel-panel.active{
+.carousel-panel.active {
     transform: translateX(0) translateZ(100px) rotateY(0deg) scale(1);
     opacity: 1;
     z-index: 10;
 }
 
-.carousel-panel.prev{
-    transform: translateX(-260px) translateZ(-150px) rotateY(45deg) scale(0.85);
+.carousel-panel.prev {
+    transform: translateX(-240px) translateZ(-150px) rotateY(45deg) scale(0.85);
     opacity: 0.4;
     z-index: 5;
     pointer-events: none;
 }
 
-.carousel-panel.next{
+.carousel-panel.next {
     transform: translateX(240px) translateZ(-150px) rotateY(-45deg) scale(0.85);
     opacity: 0.4;
     z-index: 5;
     pointer-events: none;
 }
 
-.my-carousel h3:hover {
-    border-color: #00ffff;
+.my-Carousel h3:hover {
+    text-shadow: 0px 0px 5px #00ffff;
 }
 
-.myslides a{
+.my-slides a {
     color: #00ffff;
 }
 
@@ -210,8 +217,8 @@ h2 {
 .dot-btn {
     margin: 0;
     padding: 0;
-    height: 6px;
-    width: 6px;
+    height: 10px;
+    width: 10px;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 50%;
     border: none;
@@ -256,7 +263,11 @@ button:hover {
     background-color: #ff9f1c;
 }
 
-@keyframes right {
-  from {left: 0%;}
-  to {left: 100%;}
+@keyframes right{
+    from{
+        left: 0%;
+    }
+    to{
+        left: 100%;
+    }
 }
