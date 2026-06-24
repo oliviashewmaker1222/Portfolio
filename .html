@@ -9,75 +9,70 @@
 </head>
 
 <body>
+    <div class="flora-wrap" id="jelly-container"></div>
 
     <nav>
-        <!-- TOP ROW -->
-        <div class="hud-header">
-            <div class="hud-system-status">
-                <span class="status-dot"></span> SYSTEM_V.01
-            </div>
-            <div class="hud-graphic">
-                <img class="ship" src="sub graphic.png" alt="Tech Hud Submarine">
-            </div>
+        <span class="nav-logo">OS</span>
+        <span class="nav-mid" id="depth-display">DEPTH: 0m — SIGNAL NOMINAL</span>
+        <div class="nav-links">
+            <a href="#about">Scan</a>
+            <a href="#projects">Databank</a>
+            <a href="#resume">Vitals</a>
+            <a href="#contact">Transmit</a>
         </div>
-
-        <!-- BOTTOM ROW WITH TECH STATUS DOTS -->
-        <div class="hud-nav-links">
-
-            <div class="hud-btn-group">
-                <a href="#about" class="hud-btn">01 ABOUT</a>
-                <div class="hud-dots-row">
-                    <span class="hud-mini-dot active"></span>
-                    <span class="hud-mini-dot"></span>
-                    <span class="hud-mini-dot"></span>
-                    <span class="hud-mini-dot"></span>
-                </div>
-            </div>
-
-            <div class="hud-btn-group">
-                <a href="#projects" class="hud-btn">02 PROJECTS</a>
-                <div class="hud-dots-row">
-                    <span class="hud-mini-dot active"></span>
-                    <span class="hud-mini-dot active"></span>
-                    <span class="hud-mini-dot"></span>
-                    <span class="hud-mini-dot"></span>
-                </div>
-            </div>
-
-            <div class="hud-btn-group">
-                <a href="#resume" class="hud-btn">03 RESUME</a>
-                <div class="hud-dots-row">
-                    <span class="hud-mini-dot active"></span>
-                    <span class="hud-mini-dot active"></span>
-                    <span class="hud-mini-dot active"></span>
-                    <span class="hud-mini-dot"></span>
-                </div>
-            </div>
-
-            <div class="hud-btn-group">
-                <a href="#contact" class="hud-btn">04 CONTACT</a>
-                <div class="hud-dots-row">
-                    <span class="hud-mini-dot active"></span>
-                    <span class="hud-mini-dot active"></span>
-                    <span class="hud-mini-dot active"></span>
-                    <span class="hud-mini-dot active"></span>
-                </div>
-            </div>
-
-        </div>
-
     </nav>
 
-    <header>
-        <h1>Olivia Shewmaker</h1>
-        <p>Innovating for Changing Currents.</p>
+    <header class="hero">
+        <div class="hero-signal">
+            <div class="signal-bar"></div>
+            PDA INITIALIZED — LIFEFORM DETECTED
+        </div>
+        <h1 class="hero-name">
+            OLIVIA<br>
+            <span class="ghost">SHEWMAKER</span>
+        </h1>
+        <p class="hero-tag">Descending into the unknown, <br> building things worth finding.</p>
+        <div class="hero-btns">
+            <a href="#projects" class="btn btn-prim">Explore Databank</a>
+            <a href="#contact" class="btn btn-prim">Broadcast Signal</a>
+        </div>
     </header>
 
+
     <section id="about">
-        <div class="pda-card">
-            <h2>About Me</h2>
-            <p>BLAH BLAH BLAH
-            <p>
+        <p class="s-eye">Lifeform Scan</p>
+        <h2 class="s-title">Analyze entity.<br>Break it open.</h2>
+        <p class="instruction"><span class="inst-icon">!</span> Click each fragment to scan and reveal data</p>
+
+        <div class="fab-grid">
+            <div class="fab-item" data-text="Your intro here — who you are, what you care about, what drives you.">
+                <div class="fab-scan-overlay"></div>
+                <div class="fab-label">// ENTRY 001 — Identity</div>
+                <div class="fab-locked-text">Ω██▓▓░▒█░▓░▓▒▓░█▒░▓▒█░▒▒▓░▒░▓█▒░</div>
+                <div class="fab-real-text"></div>
+                <div class="fab-click-hint">[ CLICK TO SCAN ]</div>
+            </div>
+            <div class="fab-item" data-text="Your approach — how you think about problems and projects.">
+                <div class="fab-scan-overlay"></div>
+                <div class="fab-label">// ENTRY 002 — Approach</div>
+                <div class="fab-locked-text">▒░█▓░▓█▒░▓█░▒▒▓░░▒▓▒░▒░▓█░▒▓░▓░░</div>
+                <div class="fab-real-text"></div>
+                <div class="fab-click-hint">[ CLICK TO SCAN ]</div>
+            </div>
+            <div class="fab-item" data-text="Your stats — years coding, projects built, things you're proud of.">
+                <div class="fab-scan-overlay"></div>
+                <div class="fab-label">// ENTRY 003 — Log Data</div>
+                <div class="fab-locked-text">░▒▓█░▒░▓▒▓░█▒░▓▒▓░░▒▓░▒▓▒░░▓░▒░▓█</div>
+                <div class="fab-real-text"></div>
+                <div class="fab-click-hint">[ CLICK TO SCAN ]</div>
+            </div>
+            <div class="fab-item" data-text="Your status — what you're looking for, open to, excited about right now.">
+                <div class="fab-scan-overlay"></div>
+                <div class="fab-label">// ENTRY 004 — Status</div>
+                <div class="fab-locked-text">▓░▒█░▓█▒░░▒▓▒░▓░░▒▒▓▒░▓▒▓░▒░▓█░▒▒</div>
+                <div class="fab-real-text"></div>
+                <div class="fab-click-hint">[ CLICK TO SCAN ]</div>
+            </div>
         </div>
     </section>
 

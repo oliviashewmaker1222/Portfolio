@@ -63,3 +63,46 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+function spawnJelly() {
+  const wrap = document.getElementById('jelly-container');
+  const el = document.createElement('div');
+  el.className = 'flora';
+  el.innerHTML = '<div class="jelly"></div>';
+  el.style.cssText = `left:${Math.random()*100}%;bottom:-60px;transform:scale(${0.4+Math.random()*0.8});animation-duration:${18+Math.random()*22}s;animation-delay:${Math.random()*8}s;`;
+  wrap.appendChild(el);
+  el.addEventListener('animationend', () => el.remove());
+  setTimeout(spawnJelly, 1800 + Math.random() * 3000);
+}
+
+spawnJelly(); spawnJelly(); spawnJelly();
+
+let GLITCH = '█▓▒░Ω◈▮◉◌▸●○◆■□▪';
+function randomGlitch(len) {
+  let s = '';
+  for (let i = 0; i < len; i++) s += GLITCH[Math.floor(Math.random() * GLITCH.length)];
+  return s;
+}
+
+function scrambleReveal(item, realText) {
+  let locked = item.querySelector('.fab-locked-text');
+  let real = item.querySelector('.fab-real-text');
+  real.textContent = realText;
+  item.classList.add('scanning');
+  let t = 0;
+  let interval = setInterval(() => {
+    locked.textContent = randomGlitch(realText.length + 10);
+    if (++t > 12) clearInterval(interval);
+  }, 40);
+  setTimeout(() => {
+    item.classList.remove('scanning');
+    item.classList.add('unlocked');
+  }, 520);
+}
+
+document.querySelectorAll('.fab-item').forEach(item => {
+  item.addEventListener('click', () => {
+    if (!item.classList.contains('unlocked'))
+      scrambleReveal(item, item.dataset.text);
+  });
+});
