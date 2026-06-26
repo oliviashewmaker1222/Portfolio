@@ -105,4 +105,13 @@ document.querySelectorAll('.fab-item').forEach(item => {
     if (!item.classList.contains('unlocked'))
       scrambleReveal(item, item.dataset.text);
   });
+
+  let depth = document.getElementById('depth-display');
+  let states= ['Signal Nominal', 'Pressure Rising', 'Thermal Vent Detected', 'Deep Water Zone', 'Void Approaching'];
+  window.addEventListener('scroll', () => {
+    let scrollY = window.scrollY/(document.body.scrollHeight - window.innerHeight);
+    let depth2 = Math.round(scrollY * 2500);
+    let state = states[Math.min(Math.floor(scrollY * states.length), states.length - 1)];
+    depth.textContent = `Depth: ${depth2}m — ${state}`;
+  });
 });
