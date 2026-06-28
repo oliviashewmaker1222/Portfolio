@@ -1,318 +1,377 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Olivia Shewmaker Portfolio</title>
+    <title>Olivia Shewmaker — Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
-    <div class="flora-wrap" id="jelly-container"></div>
-    <div class="b-wrap" id="blob-container"></div>
 
-    <nav>
-        <span class="nav-logo">OS</span>
-        <span class="nav-mid" id="depth-display">DEPTH: 0m — SIGNAL NOMINAL</span>
-        <div class="nav-links">
-            <a href="#about" class="nav-btn">Scan</a>
-            <a href="#projects" class="nav-btn">Databank</a>
-            <a href="#resume" class="nav-btn">Vitals</a>
-            <a href="#contact" class="nav-btn">Transmit</a>
-        </div>
-    </nav>
-
-    <header class="hero">
-        <div class="hero-signal">
-            <div class="signal-bar"> </div>
-            <h3>PDA INITIALIZED — LIFEFORM DETECTED</h3>
-        </div>
-        <h1 class="hero-name">
-            OLIVIA<br>
-            <span class="ghost">SHEWMAKER</span>
-        </h1>
-        <p class="hero-tag">Descending into the unknown, <br> building things worth finding.</p>
-        <div class="hero-btns">
-            <a href="#projects" class="btn btn-prim">Explore Databank</a>
-            <a href="#contact" class="btn btn-prim">Broadcast Signal</a>
-        </div>
-    </header>
-
-
-    <section id="about">
-        <div class="signal-bar"> </div>
-        <h3 class="s-eye">Lifeform Scan</h3>
-        <h2 class="s-title">Analyze entity.<br>Break it open.</h2>
-        <p class="instruction"><span class="inst-icon">!</span> Click each fragment to scan and reveal data</p>
-
-        <div class="fab-grid">
-            <div class="fab-item" data-text="Your intro here — who you are, what you care about, what drives you.">
-                <div class="fab-scan-overlay"></div>
-                <div class="fab-label">// ENTRY 001 — Identity</div>
-                <div class="fab-locked-text">Ω██▓▓░▒█░▓░▓▒▓░█▒░▓▒█░▒▒▓░▒░▓█▒░</div>
-                <div class="fab-real-text"></div>
-                <div class="fab-click-hint">[ CLICK TO SCAN ]</div>
+    <div class="inventory-overlay" id="inventory-panel" aria-hidden="true">
+        <div class="inventory-card">
+            <div class="inventory-header">
+                <span>▣ INVENTORY</span>
+                <span>Press E to close</span>
             </div>
-            <div class="fab-item" data-text="Your approach — how you think about problems and projects.">
-                <div class="fab-scan-overlay"></div>
-                <div class="fab-label">// ENTRY 002 — Approach</div>
-                <div class="fab-locked-text">▒░█▓░▓█▒░▓█░▒▒▓░░▒▓▒░▒░▓█░▒▓░▓░░</div>
-                <div class="fab-real-text"></div>
-                <div class="fab-click-hint">[ CLICK TO SCAN ]</div>
-            </div>
-            <div class="fab-item" data-text="Your stats — years coding, projects built, things you're proud of.">
-                <div class="fab-scan-overlay"></div>
-                <div class="fab-label">// ENTRY 003 — Log Data</div>
-                <div class="fab-locked-text">░▒▓█░▒░▓▒▓░█▒░▓▒▓░░▒▓░▒▓▒░░▓░▒░▓█</div>
-                <div class="fab-real-text"></div>
-                <div class="fab-click-hint">[ CLICK TO SCAN ]</div>
-            </div>
-            <div class="fab-item" data-text="Your status — what you're looking for, open to, excited about right now.">
-                <div class="fab-scan-overlay"></div>
-                <div class="fab-label">// ENTRY 004 — Status</div>
-                <div class="fab-locked-text">▓░▒█░▓█▒░░▒▓▒░▓░░▒▒▓▒░▓▒▓░▒░▓█░▒▒</div>
-                <div class="fab-real-text"></div>
-                <div class="fab-click-hint">[ CLICK TO SCAN ]</div>
+            <ul class="inventory-list">
+                <li>• Lifepod Keycard</li>
+                <li>• Signal Beacon</li>
+                <li>• Data Core Fragment</li>
+                <li>• Navigation Map</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ── SCREEN 1: OCEAN ENTRY ── -->
+    <div id="screen-ocean">
+        <div class="ocean-rays">
+            <div class="ray"></div>
+            <div class="ray"></div>
+            <div class="ray"></div>
+            <div class="ray"></div>
+            <div class="ray"></div>
+            <div class="ray"></div>
+            <div class="ray"></div>
+        </div>
+        <div class="bubbles-wrap" id="bubbles"></div>
+        <div class="jellyfish-wrap" id="jellies-ocean"></div>
+
+        <div class="ocean-hero">
+            <div class="signal-tag">// SIGNAL ACQUIRED — PLANET 4546B</div>
+            <h1 class="hero-name">OLIVIA<br><span class="hero-ghost">SHEWMAKER</span></h1>
+            <p class="hero-sub">
+                Descending into the unknown,<br>
+                building things worth finding.
+            </p>
+            <button id="dive-btn">▾ Enter Lifepod</button>
+        </div>
+    </div>
+
+    <!-- ── SCREEN 2: LIFEPOD EXTERIOR ── -->
+    <section>
+        <div id="screen-exterior">
+            <h2>Press E to open inventory</h2>
+            <div class="ext-depth-bar">
+                <span>DEPTH: 47m</span>
+                <span id="ext-time">––:––</span>
+                <span>SAFE SHALLOWS</span>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="projects">
-        <h2>Projects</h2>
-        <div class="my-Carousel">
-            <div class="my-slides">
-                <div class="carousel-panel">
-                    <img src="project1.png" alt="Project 1">
-                    <h3>The Math Recovery Project</h3>
-                    <p>A brief description</p>
-                    <div class="flora-badges"><span class="fbadge">Figma</span><span class="fbadge">Framer</span></div>
-                    <a>View Repo →</a>
-                </div>
-                <div class="carousel-panel">
-                    <img src="project2.png" alt="Project 1">
-                    <h3>World Cup Simulator</h3>
-                    <p>A brief description</p>
-                    <div class="flora-badges"><span class="fbadge">Figma</span><span class="fbadge">Framer</span></div>
-                    <a>View Repo →</a>
-                </div>
-                <div class="carousel-panel">
-                    <img src="project1.png" alt="Project 1">
-                    <h3>Filler</h3>
-                    <p>A brief description</p>
-                    <div class="flora-badges"><span class="fbadge">Figma</span><span class="fbadge">Framer</span></div>
-                    <a>View Repo →</a>
-                </div>
-            </div>
-        </div>
+    <!-- ── SCREEN 3: LIFEPOD INTERIOR / PDA ── -->
+    <section>
+        <div id="screen-pod">
 
-        <div class="carousel-dots">
-            <button class="dot-btn"></button>
-            <button class="dot-btn"></button>
-            <button class="dot-btn"></button>
-        </div>
+            <div class="pod-frame">
+                <div class="pod-top-bar">
+                    <span><span class="status-dot"></span>LIFEPOD 5 — HULL INTEGRITY NOMINAL</span>
+                    <span id="pod-time">––:––</span>
+                    <span>DEPTH: 47m — SAFE SHALLOWS</span>
+                </div>
 
+                <div class="porthole">
+                    <div class="porthole-fish">🐠</div>
+                </div>
+
+                <div class="pda-wrap">
+                    <div class="pda">
+
+                        <div class="pda-top">
+                            <span class="pda-icon">◈ PDA</span>
+                            <span class="pda-title">OLIVIA SHEWMAKER — SURVIVOR PROFILE</span>
+                        </div>
+
+                        <div class="pda-tabs">
+                            <button class="tab-btn active" data-tab="about">▸ Lifeform Scan</button>
+                            <button class="tab-btn" data-tab="projects">▸ Native Life</button>
+                            <button class="tab-btn" data-tab="resume">▸ Vitals</button>
+                            <button class="tab-btn" data-tab="contact">▸ Transmit</button>
+                        </div>
+
+                        <div class="pda-body">
+
+                            <!-- ABOUT -->
+                            <div class="tab-panel active" id="tab-about">
+                                <p class="scan-instruction"><span class="inst-icon">!</span> Click each fragment to scan
+                                    and
+                                    reveal data</p>
+                                <div class="fab-grid">
+                                    <div class="fab-item"
+                                        data-text="Hey! I'm Olivia — a developer who loves building things at the intersection of code, design, and imagination. I care about creating experiences that actually mean something.">
+                                        <div class="scan-line"></div>
+                                        <div class="fab-label">// ENTRY 001 — Identity</div>
+                                        <div class="fab-locked">Ω██▓▓░▒█░▓░▓▒▓░█▒░▓▒█░▒▒▓░▒░▓█▒░</div>
+                                        <div class="fab-real"></div>
+                                        <div class="fab-hint">[ CLICK TO SCAN ]</div>
+                                    </div>
+                                    <div class="fab-item"
+                                        data-text="I approach problems by breaking them apart first — understanding the shape of the thing before I start building. I like clean code, weird ideas, and making the frontend feel alive.">
+                                        <div class="scan-line"></div>
+                                        <div class="fab-label">// ENTRY 002 — Approach</div>
+                                        <div class="fab-locked">▒░█▓░▓█▒░▓█░▒▒▓░░▒▓▒░▒░▓█░▒▓░▓░░</div>
+                                        <div class="fab-real"></div>
+                                        <div class="fab-hint">[ CLICK TO SCAN ]</div>
+                                    </div>
+                                    <div class="fab-item"
+                                        data-text="1.5+ years coding across multiple stacks. I've shipped web apps, built AI models, designed in Figma, and engineered physical projects in CAD — all in the last two years.">
+                                        <div class="scan-line"></div>
+                                        <div class="fab-label">// ENTRY 003 — Log Data</div>
+                                        <div class="fab-locked">░▒▓█░▒░▓▒▓░█▒░▓▒▓░░▒▓░▒▓▒░░▓░▒░▓█</div>
+                                        <div class="fab-real"></div>
+                                        <div class="fab-hint">[ CLICK TO SCAN ]</div>
+                                    </div>
+                                    <div class="fab-item"
+                                        data-text="Currently open to new missions — internships, collab projects, or anything interesting. I'm learning fast and building faster. Signal me below.">
+                                        <div class="scan-line"></div>
+                                        <div class="fab-label">// ENTRY 004 — Status</div>
+                                        <div class="fab-locked">▓░▒█░▓█▒░░▒▓▒░▓░░▒▒▓▒░▓▒▓░▒░▓█░▒▒</div>
+                                        <div class="fab-real"></div>
+                                        <div class="fab-hint">[ CLICK TO SCAN ]</div>
+                                    </div>
+                                </div>
+                            </div>
     </section>
 
-    <section id="resume">
-        <div class="section" id="resume">
-            <div class="signal-bar"> </div>
-            <h3 class="s-eye reveal">HUD — Vital Signs</h3>
-            <h2 class="s-title reveal">Current readings.</h2>
+    <section>
+        <!-- PROJECTS -->
+        <div class="tab-panel" id="tab-projects">
+            <div class="carousel-wrap">
+                <div class="car-stage">
+                    <div class="car-card">
+                        <div class="card-img">📐</div>
+                        <h3 class="card-title">Math Recovery Project</h3>
+                        <p class="card-desc">A tool to help students identify and fill gaps in math
+                            knowledge through adaptive assessments.</p>
+                        <div class="card-badges">
+                            <span class="cbadge">Figma</span>
+                            <span class="cbadge">Framer</span>
+                        </div>
+                        <a class="card-link" href="#">View Repo →</a>
+                    </div>
+                    <div class="car-card">
+                        <div class="card-img">⚽</div>
+                        <h3 class="card-title">World Cup Simulator</h3>
+                        <p class="card-desc">Simulates tournament brackets and match outcomes using
+                            historical team data and probability models.</p>
+                        <div class="card-badges">
+                            <span class="cbadge">JavaScript</span>
+                            <span class="cbadge">API</span>
+                        </div>
+                        <a class="card-link" href="#">View Repo →</a>
+                    </div>
+                    <div class="car-card">
+                        <div class="card-img">🤖</div>
+                        <h3 class="card-title">AI Capstone Project</h3>
+                        <p class="card-desc">Machine learning capstone built with Inspirit AI — trained
+                            a model to classify and predict real-world outcomes.</p>
+                        <div class="card-badges">
+                            <span class="cbadge">Python</span>
+                            <span class="cbadge">ML</span>
+                        </div>
+                        <a class="card-link" href="#">View Repo →</a>
+                    </div>
+                </div>
+            </div>
+            <div class="car-dots" id="car-dots">
+                <button class="cdot active" data-idx="0"></button>
+                <button class="cdot" data-idx="1"></button>
+                <button class="cdot" data-idx="2"></button>
+            </div>
+        </div>
+    </section>
 
-            <div class="vitals-hud reveal" id="vitals-hud">
-                <div class="c tl"></div>
-                <div class="c tr"></div>
-                <div class="c bl"></div>
-                <div class="c br"></div>
-                <div class="vitals-header">
+    <!-- RESUME -->
+    <section>
+        <div class="tab-panel" id="tab-resume">
+            <div class="vitals-hud">
+                <div class="corner tl"></div>
+                <div class="corner tr"></div>
+                <div class="corner bl"></div>
+                <div class="corner br"></div>
+                <div class="vital-hdr">
                     <span>ENTITY VITALS — LIVE READOUT</span>
-                    <span id="vital-time">––:––</span>
+                    <span id="vtime">––:––</span>
                 </div>
 
-                <div class="vital-row">
-                    <div class="vital-meta">
-                        <span class="vital-name">▮ Experience</span>
-                        <span class="vital-val">1.5+ Years Active</span>
+                <div class="vrow">
+                    <div class="vmeta">
+                        <span class="vname">▮ Experience</span>
+                        <span class="vval">1.5+ Years Active</span>
                     </div>
-                    <div class="vital-bar-track">
-                        <div class="vital-bar-fill health"></div>
+                    <div class="vtrack">
+                        <div class="vfill" data-w="55"></div>
                     </div>
-                    <div class="vital-note">// Accumulated field time — multiple environments</div>
+                    <div class="vnote">// Accumulated field time — multiple environments</div>
                 </div>
-
-                <div class="vital-row">
-                    <div class="vital-meta">
-                        <span class="vital-name">▮ Oxygen / Bandwidth</span>
-                        <span class="vital-val">Capacity: HIGH</span>
+                <div class="vrow">
+                    <div class="vmeta">
+                        <span class="vname">▮ Bandwidth</span>
+                        <span class="vval">Capacity: HIGH</span>
                     </div>
-                    <div class="vital-bar-track">
-                        <div class="vital-bar-fill oxygen" data-fill="88"></div>
+                    <div class="vtrack">
+                        <div class="vfill" data-w="88"></div>
                     </div>
-                    <div class="vital-note">// Currently available for new projects and collabs</div>
+                    <div class="vnote">// Currently available for new projects and collabs</div>
                 </div>
-
-                <div class="vital-row">
-                    <div class="vital-meta">
-                        <span class="vital-name">▮ Skill Load</span>
-                        <span class="vital-val">Operational</span>
+                <div class="vrow">
+                    <div class="vmeta">
+                        <span class="vname">▮ Skill Load</span>
+                        <span class="vval">Operational</span>
                     </div>
-                    <div class="vital-bar-track">
-                        <div class="vital-bar-fill skill" data-fill="80"></div>
+                    <div class="vtrack">
+                        <div class="vfill" data-w="80"></div>
                     </div>
-                    <div class="vital-note">// JS / Java / HTML / CSS / Python / CAD</div>
+                    <div class="vnote">// JS / Java / HTML / CSS / Python / CAD</div>
                 </div>
-
-                <div class="vital-row">
-                    <div class="vital-meta">
-                        <span class="vital-name">▮ Availability</span>
-                        <span class="vital-val">OPEN</span>
+                <div class="vrow" style="margin-bottom:0">
+                    <div class="vmeta">
+                        <span class="vname">▮ Availability</span>
+                        <span class="vval">OPEN</span>
                     </div>
-                    <div class="vital-bar-track">
-                        <div class="vital-bar-fill avail" data-fill="95"></div>
+                    <div class="vtrack">
+                        <div class="vfill" data-w="95"></div>
                     </div>
-                    <div class="vital-note">// Accepting new missions — signal to establish contact</div>
+                    <div class="vnote">// Accepting new missions — signal to establish contact</div>
                 </div>
             </div>
 
-            <div class="reveal">
-                <h3 class="exp-log-title">MISSION LOG — Experience</h3>
-                <div class="log-entry">
-                    <div class="log-time">2026 –<br>PRESENT</div>
+            <div class="exp-log">
+                <p class="exp-title">MISSION LOG — Experience</p>
+                <div class="log-row">
+                    <div class="log-t">2026 –<br>PRESENT</div>
                     <div>
                         <div class="log-role">Nextech Catapult</div>
-                        <div class="log-place">Company Name</div>
-                        <div class="log-desc">What you did there. Focus on impact — what shipped, what improved, what
-                            you owned.</div>
+                        <div class="log-place">Internship</div>
+                        <div class="log-desc">What you did there. Focus on impact — what shipped, what
+                            improved, what you owned.</div>
                     </div>
                 </div>
-                <div class="log-entry">
-                    <div class="log-time">2025 –<br>2026</div>
+                <div class="log-row">
+                    <div class="log-t">2025–26</div>
                     <div>
                         <div class="log-role">AP Computer Science A</div>
                         <div class="log-place">AP Classroom</div>
-                        <div class="log-desc">What you built, who used it, and why it mattered.</div>
+                        <div class="log-desc">Java-based programming, algorithms, and object-oriented
+                            fundamentals.</div>
                     </div>
                 </div>
-                <div class="log-entry">
-                    <div class="log-time">2025 –<br>2026</div>
+                <div class="log-row">
+                    <div class="log-t">2025–26</div>
                     <div>
                         <div class="log-role">AI Capstone Project</div>
                         <div class="log-place">Inspirit AI</div>
-                        <div class="log-desc">What you did there. Focus on impact — what shipped, what improved, what
-                            you owned.</div>
+                        <div class="log-desc">Built and trained a real ML model to solve a
+                            classification problem.</div>
                     </div>
                 </div>
-                <div class="log-entry">
-                    <div class="log-time">2025 –<br>2026</div>
+                <div class="log-row">
+                    <div class="log-t">2025–26</div>
                     <div>
-                        <div class="log-role">POE</div>
-                        <div class="log-place">Principles of Engineering</div>
-                        <div class="log-desc">What you did there. Focus on impact — what shipped, what improved, what
-                            you owned.</div>
+                        <div class="log-role">Principles of Engineering</div>
+                        <div class="log-place">POE / PLTW</div>
+                        <div class="log-desc">CAD design, physical prototyping, and engineering
+                            problem-solving.</div>
                     </div>
                 </div>
-                <div class="log-entry">
-                    <div class="log-time">2025</div>
+                <div class="log-row">
+                    <div class="log-t">2025</div>
                     <div>
-                        <div class="log-role">Summer School intro to CS</div>
+                        <div class="log-role">Intro to CS</div>
                         <div class="log-place">Indiana Online</div>
-                        <div class="log-desc">Where it started. The foundation of everything after.</div>
+                        <div class="log-desc">Where it started. The foundation of everything after.
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="skills-block">
-                    <p class="exp-log-title">TOOLKIT — Loaded Modules</p>
-                    <div class="skill-chips">
-                        <span class="sc">JavaScript</span>
-                        <span class="sc">API</span>
-                        <span class="sc">CSS</span>
-                        <span class="sc">HTML</span>
-                        <span class="sc">Python</span>
-                        <span class="sc">Fusion 360</span>
-                        <span class="sc">Java</span>
-                        <span class="sc">OnShape</span>
-                        <span class="sc">Git</span>
-                    </div>
+            <div class="toolkit">
+                <p class="exp-title">TOOLKIT — Loaded Modules</p>
+                <div class="chips">
+                    <span class="chip">JavaScript</span>
+                    <span class="chip">Java</span>
+                    <span class="chip">Python</span>
+                    <span class="chip">HTML</span>
+                    <span class="chip">CSS</span>
+                    <span class="chip">API</span>
+                    <span class="chip">Fusion 360</span>
+                    <span class="chip">OnShape</span>
+                    <span class="chip">Git</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Make it work-->
-    <section id="contact">
-        <div class="section" id="contact">
-            <div class="signal-ui">
-                <div class="signal-beacon reveal">
-                    <div class="beacon-ring"></div>
-                    <h3>BEACON ACTIVE — ACCEPTING TRANSMISSIONS</h3>
+    <!-- CONTACT -->
+    <section>
+        <div class="tab-panel" id="tab-contact">
+            <div class="contact-wrap">
+                <div class="beacon-ring-wrap">
+                    <div class="ring-anim"></div>
+                    BEACON ACTIVE — ACCEPTING TRANSMISSIONS
                 </div>
-                <h2 class="contact-head reveal">Ready to surface?<br>Send a signal.</h2>
-                <p class="contact-sub reveal">Open comms. Drop coordinates below<br>and I'll respond within one cycle.
-                </p>
+                <h2 class="contact-head">Ready to surface?<br>Send a signal.</h2>
+                <p class="contact-sub">Open comms. Drop coordinates below<br>and I'll respond within one
+                    cycle.</p>
+            </div>
 
-                <div id="form-wrap">
-                    <div class="signal-form reveal">
-                        <div class="form-row">
-                            <div class="field-wrap">
-                                <label class="field-label">// Designation (Name)</label>
-                                <input type="text" class="field-input" placeholder="Your name" id="f-name" />
-                            </div>
-                            <div class="field-wrap">
-                                <label class="field-label">// Frequency (Email)</label>
-                                <input type="email" class="field-input" placeholder="your@email.com" id="f-email" />
-                            </div>
+            <div id="cf-form">
+                <div class="cf">
+                    <div class="cf-row">
+                        <div class="cf-field">
+                            <label class="cf-lbl">// Designation (Name)</label>
+                            <input class="cf-input" type="text" placeholder="Your name" id="fn" />
                         </div>
-                        <div class="field-wrap">
-                            <label class="field-label">// Subject Line</label>
-                            <input type="text" class="field-input" placeholder="What's this about?" id="f-subject" />
+                        <div class="cf-field">
+                            <label class="cf-lbl">// Frequency (Email)</label>
+                            <input class="cf-input" type="email" placeholder="your@email.com" id="fe" />
                         </div>
-                        <div class="field-wrap">
-                            <label class="field-label">// Message Payload</label>
-                            <textarea class="field-textarea" placeholder="Transmit your message here..."
-                                id="f-msg"></textarea>
-                        </div>
-                        <button class="broadcast-btn" id="send-btn">
-                            <span class="btn-icon">◈</span> Broadcast Signal
-                        </button>
                     </div>
+                    <div class="cf-field">
+                        <label class="cf-lbl">// Subject Line</label>
+                        <input class="cf-input" type="text" placeholder="What's this about?" id="fs" />
+                    </div>
+                    <div class="cf-field">
+                        <label class="cf-lbl">// Message Payload</label>
+                        <textarea class="cf-area" placeholder="Transmit your message here..." id="fm"></textarea>
+                    </div>
+                    <button class="send-btn" id="send-btn">◈ Broadcast Signal</button>
                 </div>
+            </div>
 
-                <div class="signal-success" id="signal-success">
-                    <div class="success-ring">◈</div>
-                    <div class="success-title">Signal Received</div>
-                    <div class="success-sub">Transmission logged. Response incoming.</div>
-                </div>
+            <div class="signal-success" id="success-msg">
+                <div class="success-ring">◈</div>
+                <div class="success-title">Signal Received</div>
+                <div class="success-sub">Transmission logged. Response incoming.</div>
+            </div>
 
-                <div class="ext-links reveal">
-                    <a href="https://github.com/oliviashewmaker1222" class="ext-link" target="_blank">
-                        <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
-                        </svg>
-                        GitHub
-                    </a>
-                    <a href="https://www.linkedin.com/in/olivia-shewmaker-84395b3a8?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="ext-link" target="_blank">
-                        <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                        </svg>
-                        LinkedIn
-                    </a>
-                    <a href="mailto:oliviashewmaker@gmail.com" class="ext-link">
-                        ◈ oliviashewmaker@gmail.com
-                    </a>
-                </div>
+            <div class="ext-links">
+                <a class="ext-link" href="https://github.com/oliviashewmaker1222" target="_blank">GitHub</a>
+                <a class="ext-link" href="https://www.linkedin.com/in/olivia-shewmaker-84395b3a8"
+                    target="_blank">LinkedIn</a>
+                <a class="ext-link" href="mailto:oliviashewmaker@gmail.com">◈
+                    oliviashewmaker@gmail.com</a>
             </div>
         </div>
     </section>
+
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <footer>
+        <span>© 2026 Olivia Shewmaker — All rights reserved</span>
+        <span>Planet 4546B — Hull Integrity: NOMINAL</span>
+    </footer>
+    </div>
 
     <script src="script.js"></script>
 </body>
-
-<footer>
-    <span>© 2026 Olivia Shewmaker — All rights reserved</span>
-    <span>Planet 4546B — Hull Integrity: NOMINAL</span>
-</footer>
 
 </html>
