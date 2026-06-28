@@ -75,7 +75,19 @@ function spawnJelly() {
   setTimeout(spawnJelly, 1800 + Math.random() * 3000);
 }
 
+function spawnBlob() {
+  const wrap = document.getElementById('blob-container');
+  const el = document.createElement('div');
+  el.className = 'b';
+  el.innerHTML = '<div class="blob"></div>';
+  el.style.cssText = `left:${Math.random()*100}%;bottom:-60px;transform:scale(${0.4+Math.random()*0.8});animation-duration:${18+Math.random()*22}s;animation-delay:${Math.random()*8}s;`;
+  wrap.appendChild(el);
+  el.addEventListener('animationend', () => el.remove());
+  setTimeout(spawnBlob, 1800 + Math.random() * 2980);
+}
+
 spawnJelly(); spawnJelly(); spawnJelly();
+spawnBlob(); spawnBlob(); spawnBlob();
 
 let GLITCH = '█▓▒░Ω◈▮◉◌▸●○◆■□▪';
 function randomGlitch(len) {
