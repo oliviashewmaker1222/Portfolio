@@ -366,5 +366,4 @@ document.addEventListener("DOMContentLoaded", () => {
       levOverlay.classList.remove("active");
     }
   });
-
 });
