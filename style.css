@@ -27,6 +27,11 @@ body {
   overflow-x: hidden;
 }
 
+body{
+  perspective: 1000px;
+  overflow: hidden;
+}
+
 /* ════════════════════════════════════
    JELLYFISH
 ════════════════════════════════════ */
@@ -342,27 +347,27 @@ body {
   background-size: cover;
   background-position: center;
   z-index: 9990;
-}
-
-/* NO filter on lifepod — depth bar stays readable always */
-#screen-lifepod.inv-open {
-  /* intentionally empty — we do NOT blur or darken the bg */
+  transition: transform 0.08s ease-out;
 }
 
 .depth-bar {
-  position: absolute;
+  display: none;
+  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   background: rgba(0, 6, 18, .92);
   border-top: 1px solid rgba(0, 140, 220, .35);
   padding: 14px 28px;
-  display: flex;
   justify-content: space-between;
   font-size: 14px;
   letter-spacing: .16em;
   color: rgba(0, 210, 255, .9);
-  z-index: 2;
+  z-index: 100000;
+}
+
+.depth-bar.visible {
+  display: flex;
 }
 
 .press-e-hint {
@@ -420,7 +425,6 @@ body {
   position: fixed;
   inset: 0;
   display: flex;
-  align-items: center;
   justify-content: center;
   padding: 16px;
   z-index: 99999;
@@ -440,7 +444,8 @@ body {
 .inv-shell {
   width: 100%;
   max-width: 1100px;
-  max-height: 92vh;
+  height: 88vh;       
+  max-height: 90vh;
   background: rgba(0, 6, 20, .97);
   border: 1px solid rgba(0, 136, 255, .35);
   border-radius: 10px;
@@ -841,7 +846,9 @@ body {
 
 .car-card {
   position: absolute;
+  margin-top: 20px;
   inset: 0;
+  height: 400px;
   background: rgba(0, 10, 32, .97);
   border: 1px solid rgba(0, 136, 255, .2);
   border-radius: 6px;
@@ -852,6 +859,7 @@ body {
   transition: all .55s cubic-bezier(.25, 1, .5, 1);
   transform: translateX(0) translateZ(-200px) scale(.8);
   z-index: 0;
+  overflow: hidden;   
 }
 
 .car-card.active {
@@ -876,17 +884,16 @@ body {
   pointer-events: none;
 }
 
-.card-img {
-  height: 88px;
-  background: linear-gradient(135deg, rgba(0, 50, 120, .55), rgba(0, 18, 55, .8));
+.car-card img {
+  width: 100%;
+  height: 88px; 
+  object-fit: cover;
   border-radius: 4px;
   border: 1px solid rgba(0, 120, 200, .25);
   margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 34px;
+  flex-shrink: 0;
 }
+
 
 .card-title {
   font-family: 'Orbitron', sans-serif;
@@ -948,6 +955,7 @@ body {
 .cdot {
   width: 30px;
   height: 7px;
+  margin-top: 110px;
   border-radius: 2px;
   background: rgba(0, 100, 180, .25);
   border: 1px solid rgba(0, 136, 255, .3);

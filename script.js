@@ -2,15 +2,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ══════════════════════════════════════
      EMAILJS SETUP
-     Replace these 3 values with your own from emailjs.com (free account):
-     1. Go to emailjs.com → sign up free
-     2. Add an Email Service (Gmail works)
-     3. Create an Email Template — use variables: {{from_name}}, {{from_email}}, {{subject}}, {{message}}
-     4. Copy your Public Key, Service ID, and Template ID below
   ══════════════════════════════════════ */
-  const EMAILJS_PUBLIC_KEY  = "iM3lgP9z0LCImD4RX";
-  const EMAILJS_SERVICE_ID  = "service_vwxl158"; 
-  const EMAILJS_TEMPLATE_ID = "template_gg2617i";   
+  const EMAILJS_PUBLIC_KEY = "iM3lgP9z0LCImD4RX";
+  const EMAILJS_SERVICE_ID = "service_vwxl158";
+  const EMAILJS_TEMPLATE_ID = "template_gg2617i";
 
   if (typeof emailjs !== "undefined") {
     emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
@@ -43,10 +38,10 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 0; i < count; i++) {
       const jelly = document.createElement("div");
       jelly.className = "jelly " + JELLY_COLS[Math.floor(Math.random() * JELLY_COLS.length)];
-      const size  = 36 + Math.random() * 64;
-      const dur   = 22 + Math.random() * 30;
+      const size = 36 + Math.random() * 64;
+      const dur = 22 + Math.random() * 30;
       const delay = Math.random() * -40;
-      const left  = Math.random() * 100;
+      const left = Math.random() * 100;
       const drift = (Math.random() - 0.5) * 160;
       const pulse = 2 + Math.random() * 3;
       jelly.style.cssText = `left:${left}%;width:${size}px;height:${size * 0.9}px;--drift:${drift}px;animation:jellyFloat ${dur}s linear ${delay}s infinite;`;
@@ -81,8 +76,8 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 0; i < count; i++) {
       const b = document.createElement("div");
       b.className = "bubble";
-      const sz    = 4 + Math.random() * 18;
-      const dur   = 9 + Math.random() * 14;
+      const sz = 4 + Math.random() * 18;
+      const dur = 9 + Math.random() * 14;
       const delay = Math.random() * -dur;
       const drift = (Math.random() - 0.5) * 70;
       b.style.cssText = `width:${sz}px;height:${sz}px;left:${Math.random() * 100}%;bottom:${Math.random() * 15}px;--drift:${drift}px;animation:rise ${dur}s linear ${delay}s infinite;`;
@@ -94,25 +89,26 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ══════════════════════════════════════
      SCREEN 1 → SCREEN 2: ENTER LIFEPOD
   ══════════════════════════════════════ */
-  const ocean    = document.getElementById("screen-ocean");
-  const lifepod  = document.getElementById("screen-lifepod");
-  const footer   = document.querySelector("footer");
-  const diveBtn  = document.getElementById("dive-btn");
+  const ocean = document.getElementById("screen-ocean");
+  const lifepod = document.getElementById("screen-lifepod");
+  const footer = document.querySelector("footer");
+  const diveBtn = document.getElementById("dive-btn");
 
   diveBtn.addEventListener("click", () => {
-    ocean.classList.add("dismissed");
-    setTimeout(() => {
-      ocean.style.display = "none";
-      lifepod.style.display = "block";
-      if (footer) footer.classList.add("visible");
-    }, 900);
-  });
+  ocean.classList.add("dismissed");
+  setTimeout(() => {
+    ocean.style.display = "none";
+    lifepod.style.display = "block";
+    document.getElementById("depth-bar").classList.add("visible");
+    if (footer) footer.classList.add("visible");
+  }, 900);
+});
 
   /* ══════════════════════════════════════
      INVENTORY OPEN / CLOSE
   ══════════════════════════════════════ */
   const invOverlay = document.getElementById("inv-overlay");
-  const invClose   = document.getElementById("inv-close");
+  const invClose = document.getElementById("inv-close");
   let invOpen = false;
 
   function openInventory() {
@@ -136,20 +132,69 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.target === invOverlay) closeInventory();
   });
 
+  /* ══════════════════════════════════════
+     EASTER EGG — LEVIATHAN
+  ══════════════════════════════════════ */
+  const levOverlay = document.getElementById("leviathan-overlay");
+  const levClose = document.getElementById("lev-close");
+
+  function triggerLeviathan() {
+    levOverlay.classList.add("active");
+    if (invOpen) closeInventory();
+  }
+
+  if (levClose) {
+    levClose.addEventListener("click", () => levOverlay.classList.remove("active"));
+  }
+
+
+  /* ══════════════════════════════════════
+     SINGLE KEYDOWN HANDLER
+     Handles: E to open/close inventory,
+              triple-E easter egg,
+              Escape to close everything
+  ══════════════════════════════════════ */
+  let ePressCount = 0;
+  let eTimer = null;
+
   document.addEventListener("keydown", (e) => {
     const tag = document.activeElement?.tagName;
-    const typing = tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT";
-    if (typing) return;
+    if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
 
+    // --- E key ---
     if (e.key.toLowerCase() === "e") {
-      if (ocean.style.display === "none" || ocean.classList.contains("dismissed")) {
-        e.preventDefault();
-        invOpen ? closeInventory() : openInventory();
-      }
-    }
-    if (e.key === "Escape" && invOpen) {
+      // Only act once we're past the ocean screen
+      if (ocean.style.display !== "none" && !ocean.classList.contains("dismissed")) return;
+
       e.preventDefault();
-      closeInventory();
+
+      ePressCount++;
+      clearTimeout(eTimer);
+
+      // Triple-E triggers easter egg
+      if (ePressCount >= 3) {
+        ePressCount = 0;
+        clearTimeout(eTimer);
+        triggerLeviathan();
+        return;
+      }
+
+      // Reset count if no third press within 1.5s
+      eTimer = setTimeout(() => { ePressCount = 0; }, 1500);
+
+      // First or second press: toggle inventory normally
+      invOpen ? closeInventory() : openInventory();
+      return;
+    }
+
+    // --- Escape key ---
+    if (e.key === "Escape") {
+      if (levOverlay.classList.contains("active")) {
+        levOverlay.classList.remove("active");
+      } else if (invOpen) {
+        e.preventDefault();
+        closeInventory();
+      }
     }
   });
 
@@ -193,9 +238,9 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".scan-item").forEach(item => {
     item.addEventListener("click", () => {
       if (item.classList.contains("unlocked")) return;
-      const text   = item.dataset.text;
+      const text = item.dataset.text;
       const cipher = item.querySelector(".scan-cipher");
-      const real   = item.querySelector(".scan-real");
+      const real = item.querySelector(".scan-real");
 
       real.textContent = text;
       item.classList.add("scanning");
@@ -217,7 +262,7 @@ document.addEventListener("DOMContentLoaded", () => {
      PROJECTS — 3D CAROUSEL (auto-rotating)
   ══════════════════════════════════════ */
   const cards = Array.from(document.querySelectorAll(".car-card"));
-  const dots  = Array.from(document.querySelectorAll(".cdot"));
+  const dots = Array.from(document.querySelectorAll(".cdot"));
   const total = cards.length;
   let curIdx = 0;
   let autoTimer = null;
@@ -235,7 +280,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function startAuto() {
     stopAuto();
-    autoTimer = setInterval(() => goTo(curIdx + 1), 3000);
+    autoTimer = setInterval(() => goTo(curIdx + 1), 2000);
   }
 
   function stopAuto() {
@@ -261,19 +306,18 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ══════════════════════════════════════
      CONTACT FORM — EmailJS
   ══════════════════════════════════════ */
-  const sendBtn  = document.getElementById("send-btn");
+  const sendBtn = document.getElementById("send-btn");
   const cfStatus = document.getElementById("cf-status");
 
   if (sendBtn) {
     sendBtn.addEventListener("click", async () => {
-      const name    = document.getElementById("fn")?.value.trim();
-      const email   = document.getElementById("fe")?.value.trim();
+      const name = document.getElementById("fn")?.value.trim();
+      const email = document.getElementById("fe")?.value.trim();
       const subject = document.getElementById("fs")?.value.trim();
       const message = document.getElementById("fm")?.value.trim();
 
-      // Validation
       let hasError = false;
-      ["fn","fe","fm"].forEach(id => {
+      ["fn", "fe", "fm"].forEach(id => {
         const el = document.getElementById(id);
         if (el && !el.value.trim()) {
           el.style.borderColor = "rgba(255,80,80,.55)";
@@ -287,7 +331,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // Email validation
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         document.getElementById("fe").style.borderColor = "rgba(255,80,80,.55)";
         cfStatus.textContent = "// Invalid frequency — check your email address";
@@ -300,15 +343,15 @@ document.addEventListener("DOMContentLoaded", () => {
       cfStatus.className = "cf-status";
 
       try {
-        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_Template_ID, {
-          from_name:  name,
+        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+          from_name: name,
           from_email: email,
-          subject:    subject || "(no subject)",
-          message:    message,
-          reply_to:   email,
+          subject: subject || "(no subject)",
+          message: message,
+          reply_to: email,
         });
 
-        const form    = document.getElementById("cf-form");
+        const form = document.getElementById("cf-form");
         const success = document.getElementById("success-msg");
         if (form) form.style.display = "none";
         if (success) success.style.display = "flex";
@@ -322,48 +365,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+
   /* ══════════════════════════════════════
-     EASTER EGG — KONAMI CODE
-     Sequence: ↑ ↓ 
+   LIFEPOD PARALLAX — 
   ══════════════════════════════════════ */
-  const KONAMI = [ "ArrowUp","ArrowDown" ];
-  let konamiIdx = 0;
+document.addEventListener("mousemove", (e) => {
+  if (!lifepod || lifepod.style.display === "none" || lifepod.style.display === "") return;
 
-  const levOverlay = document.getElementById("leviathan-overlay");
-  const levClose   = document.getElementById("lev-close");
-
-  document.addEventListener("keydown", (e) => {
-    const tag = document.activeElement?.tagName;
-    if (tag === "INPUT" || tag === "TEXTAREA") return;
-
-    const expected = KONAMI[konamiIdx];
-    if (e.key === expected) {
-      konamiIdx++;
-      if (konamiIdx === KONAMI.length) {
-        konamiIdx = 0;
-        triggerLeviathan();
-      }
-    } else {
-      konamiIdx = e.key === KONAMI[0] ? 1 : 0;
-    }
-  });
-
-  function triggerLeviathan() {
-    levOverlay.classList.add("active");
-    // Close inventory if open
-    if (invOpen) closeInventory();
+  if (invOverlay.classList.contains("open")) {
+    lifepod.style.transform = "scale(1.1) rotateY(0deg)";
+    return;
   }
 
-  if (levClose) {
-    levClose.addEventListener("click", () => {
-      levOverlay.classList.remove("active");
-    });
-  }
+  const xPct = (e.clientX / window.innerWidth - 0.5) * 2;
 
-  // Also close leviathan on Escape
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && levOverlay.classList.contains("active")) {
-      levOverlay.classList.remove("active");
-    }
-  });
+  lifepod.style.transform = `scale(1.1) rotateY(${xPct * 6}deg)`;
+  lifepod.style.backgroundPosition = `${50 + xPct * -3}% 50%`;
+});
+
 });
