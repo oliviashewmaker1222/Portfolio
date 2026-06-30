@@ -849,6 +849,7 @@ body{
   margin-top: 20px;
   inset: 0;
   height: 400px;
+  width: 350px;
   background: rgba(0, 10, 32, .97);
   border: 1px solid rgba(0, 136, 255, .2);
   border-radius: 6px;
@@ -886,25 +887,25 @@ body{
 
 .car-card img {
   width: 100%;
-  height: 88px; 
+  height: 130px; 
   object-fit: cover;
   border-radius: 4px;
   border: 1px solid rgba(0, 120, 200, .25);
-  margin-bottom: 16px;
+  margin-bottom: 10px;
   flex-shrink: 0;
 }
 
 
 .card-title {
   font-family: 'Orbitron', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-bright);
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   letter-spacing: .04em;
 }
 
 .card-desc {
-  font-size: 13px;
+  font-size: 14px;
   color: rgba(0, 200, 230, .75);
   line-height: 1.75;
   flex: 1;
