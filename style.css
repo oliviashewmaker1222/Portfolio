@@ -143,8 +143,7 @@ body{
     transform: scaleX(1.08) scaleY(.94);
   }
 }
-
-@keyframes jellyWave {
+ @keyframes jellyWave {
 
   0%,
   100% {
@@ -154,7 +153,7 @@ body{
   50% {
     transform: rotate(10deg) scaleY(1.1);
   }
-}
+} 
 
 /* ════════════════════════════════════
    SCREEN 1 — OCEAN
@@ -304,7 +303,7 @@ body{
 
 .hero-ghost {
   color: transparent;
-  -webkit-text-stroke: 1px rgba(0, 136, 255, .3);
+  -webkit-text-stroke: 1px rgba(21, 145, 253, 0.3);
 }
 
 .hero-sub {

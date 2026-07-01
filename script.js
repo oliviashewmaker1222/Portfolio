@@ -1,16 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-
-  /* ══════════════════════════════════════
-     EMAILJS SETUP
-  ══════════════════════════════════════ */
-  /* const EMAILJS_PUBLIC_KEY = "iM3lgP9z0LCImD4RX";
-  const EMAILJS_SERVICE_ID = "service_vwxl158";
-  const EMAILJS_TEMPLATE_ID = "template_gg2617i";
-
-  if (typeof emailjs !== "undefined") {
-    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-  } */
-
   /* ══════════════════════════════════════
      CLOCK
   ══════════════════════════════════════ */
@@ -314,10 +302,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   goTo(0);
   startAuto();
-
-  /* ══════════════════════════════════════
-     CONTACT FORM — EmailJS
-  ══════════════════════════════════════ */
 
   /* ══════════════════════════════════════
    CONTACT FORM — Web3Forms
