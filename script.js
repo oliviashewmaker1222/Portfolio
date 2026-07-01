@@ -3,13 +3,13 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ══════════════════════════════════════
      EMAILJS SETUP
   ══════════════════════════════════════ */
-  const EMAILJS_PUBLIC_KEY = "iM3lgP9z0LCImD4RX";
+  /* const EMAILJS_PUBLIC_KEY = "iM3lgP9z0LCImD4RX";
   const EMAILJS_SERVICE_ID = "service_vwxl158";
   const EMAILJS_TEMPLATE_ID = "template_gg2617i";
 
   if (typeof emailjs !== "undefined") {
     emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-  }
+  } */
 
   /* ══════════════════════════════════════
      CLOCK
@@ -95,14 +95,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const diveBtn = document.getElementById("dive-btn");
 
   diveBtn.addEventListener("click", () => {
-  ocean.classList.add("dismissed");
-  setTimeout(() => {
-    ocean.style.display = "none";
-    lifepod.style.display = "block";
-    document.getElementById("depth-bar").classList.add("visible");
-    if (footer) footer.classList.add("visible");
-  }, 900);
-});
+    ocean.classList.add("dismissed");
+    setTimeout(() => {
+      ocean.style.display = "none";
+      lifepod.style.display = "block";
+      document.getElementById("depth-bar").classList.add("visible");
+      if (footer) footer.classList.add("visible");
+    }, 900);
+  });
 
   /* ══════════════════════════════════════
      INVENTORY OPEN / CLOSE
@@ -239,8 +239,10 @@ document.addEventListener("DOMContentLoaded", () => {
     item.addEventListener("click", () => {
       if (item.classList.contains("unlocked")) return;
       const text = item.dataset.text;
+      const imgSrc = item.dataset.img;
       const cipher = item.querySelector(".scan-cipher");
       const real = item.querySelector(".scan-real");
+      const scanBody = item.querySelector(".scan-body");
 
       real.textContent = text;
       item.classList.add("scanning");
@@ -255,6 +257,16 @@ document.addEventListener("DOMContentLoaded", () => {
         item.classList.remove("scanning");
         item.classList.add("unlocked");
       }, 560);
+
+      if (imgSrc && scanBody) {
+        const img = document.createElement("img");
+        img.src = imgSrc;
+        img.className = "scanned-image";
+        img.alt = "Scanned Data";
+        
+        scanBody.appendChild(img);
+      }
+
     });
   });
 
@@ -306,11 +318,19 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ══════════════════════════════════════
      CONTACT FORM — EmailJS
   ══════════════════════════════════════ */
+
+  /* ══════════════════════════════════════
+   CONTACT FORM — Web3Forms
+══════════════════════════════════════ */
+  const WEB3FORMS_ACCESS_KEY = "5896b196-65ea-450a-8ac7-419bf106e5a1";
+
   const sendBtn = document.getElementById("send-btn");
   const cfStatus = document.getElementById("cf-status");
 
   if (sendBtn) {
-    sendBtn.addEventListener("click", async () => {
+    sendBtn.addEventListener("click", async (e) => {
+      if (e) e.preventDefault();
+
       const name = document.getElementById("fn")?.value.trim();
       const email = document.getElementById("fe")?.value.trim();
       const subject = document.getElementById("fs")?.value.trim();
@@ -343,21 +363,32 @@ document.addEventListener("DOMContentLoaded", () => {
       cfStatus.className = "cf-status";
 
       try {
-        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-          from_name: name,
-          from_email: email,
-          subject: subject || "(no subject)",
-          message: message,
-          reply_to: email,
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            access_key: WEB3FORMS_ACCESS_KEY,
+            name: name,
+            email: email,
+            subject: subject || "(no subject)",
+            message: message,
+          }),
         });
 
-        const form = document.getElementById("cf-form");
-        const success = document.getElementById("success-msg");
-        if (form) form.style.display = "none";
-        if (success) success.style.display = "flex";
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          const actualFormFields = document.querySelector(".cf");
+          const successMsg = document.getElementById("success-msg");
+          if (actualFormFields) actualFormFields.style.display = "none";
+          if (successMsg) successMsg.style.setProperty("display", "flex", "important");
+          if (cfStatus) cfStatus.textContent = "";
+        } else {
+          throw new Error(data.message || "Unknown error");
+        }
 
       } catch (err) {
-        console.error("EmailJS error:", err);
+        console.error("Web3Forms error:", err);
         cfStatus.textContent = "// Transmission failed — try oliviashewmaker@gmail.com directly";
         cfStatus.className = "cf-status error";
         sendBtn.disabled = false;
@@ -365,10 +396,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-
-  /* ══════════════════════════════════════
-   LIFEPOD PARALLAX — 
-  ══════════════════════════════════════ */
+/* ══════════════════════════════════════
+ LIFEPOD PARALLAX — 
+══════════════════════════════════════ */
 document.addEventListener("mousemove", (e) => {
   if (!lifepod || lifepod.style.display === "none" || lifepod.style.display === "") return;
 

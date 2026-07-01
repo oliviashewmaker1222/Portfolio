@@ -97,6 +97,13 @@
                             <div class="inv-row-type">Contact</div>
                         </div>
                     </div>
+                    <div class="inv-row" data-tab="sources">
+                        <div class="inv-circle">📚</div>
+                        <div class="inv-row-meta">
+                            <div class="inv-row-name">References</div>
+                            <div class="inv-row-type">Sources</div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- RIGHT CONTENT -->
@@ -155,7 +162,8 @@
                             </div>
 
                             <div class="scan-item"
-                                data-text="Currently open to new missions — internships, collab projects, or anything interesting. I'm learning fast and building faster. Signal me below.">
+                                data-text="Currently open to new missions such as internships, collab projects, or anything interesting. I'm learning fast and building faster. Signal me below."
+                                data-img="pitch.jpeg">
                                 <div class="scan-circle">
                                     <span class="scan-icon">🛰️</span>
                                     <div class="scan-ring"></div>
@@ -185,7 +193,8 @@
                             </div>
 
                             <div class="scan-item"
-                                data-text="When I'm not coding, you can usually catch me on the soccer field playing for my school and club teams. Otherwise, I'm volunteering, hanging out with friedns, or getting lost exploring the depths of Subnautica.">
+                                data-text="When I'm not coding, you can usually catch me on the soccer field playing for my school and club teams. Otherwise, I'm volunteering, hanging out with friedns, or getting lost exploring the depths of Subnautica."
+                                data-img="soccer.jpeg">
                                 <div class="scan-circle">
                                     <span class="scan-icon">🐠</span>
                                     <div class="scan-ring"></div>
@@ -199,247 +208,295 @@
                                 <div class="scan-line"></div>
                             </div>
 
+                    </div>
+                </div>
+
+                <!-- PROJECTS TAB -->
+                <div class="tab-panel" id="tab-projects">
+                    <div class="panel-title">◈ NATIVE LIFE — Discovered Specimens</div>
+                    <div class="carousel-wrap">
+                        <div class="car-stage">
+                            <div class="car-card">
+                                <img src="project1.png" class="code">
+                                <h3 class="card-title">Math Recovery Project</h3>
+                                <p class="card-desc">As the internship’s first coding project, I built a website
+                                    raising awareness about Perry Meridian middle schoolers failing math due to
+                                    COVID-19 learning disruptions.
+                                <p>
+                                <div class="card-badges">
+                                    <span class="cbadge">HTML</span>
+                                    <span class="cbadge">CSS</span>
+                                </div>
+                                <a class="card-link"
+                                    href="http://127.0.0.1:3002/index.html?vscode-livepreview=true">View
+                                    Repo →</a>
+                            </div>
+                            <div class="car-card">
+                                <img src='project2.png' class="code">
+                                <h3 class="card-title">World Cup Simulator</h3>
+                                <p class="card-desc">For my second project, I utilized HTML, CSS, and JavaScript to
+                                    build a “choose your own adventure” World Cup simulator that allows users to
+                                    guide their team through the World Cup finals.</p>
+                                <div class="card-badges">
+                                    <span class="cbadge">HTML</span>
+                                    <span class="cbadge">CSS</span>
+                                    <span class="cbadge">JavaScript</span>
+                                </div>
+                                <a class="card-link"
+                                    href="http://127.0.0.1:3004/index.html?vscode-livepreview=true">View
+                                    Repo →</a>
+                            </div>
+                            <div class="car-card">
+                                <img src="flood watch.png" class="code">
+                                <h3 class="card-title">AI Capstone Project</h3>
+                                <p class="card-desc">Engineered a machine learning capstone project in collaboration
+                                    with Inspirit AI, developing a predictive model to classify real-world
+                                    precipitation rates for seamless routing integration.</p>
+                                <div class="card-badges">
+                                    <span class="cbadge">Python</span>
+                                    <span class="cbadge">ML</span>
+                                    <span class="cbadge">API</span>
+                                </div>
+                                <a class="card-link" href="https://d94151e1f5a353bef1.gradio.live/">View Repo →</a>
+                            </div>
+                            <div class="car-card">
+                                <img src="city.png" class="cad">
+                                <h3 class="card-title">Sustainable City Project</h3>
+                                <p class="card-desc1">Designed an eco-city in Fusion 360, integrating high-density
+                                    skyscrapers with renewable energy and rooftop agriculture.</p>
+                                <a class="card-link"
+                                    href="https://fusion.online.autodesk.com/webapp?submit_button=Launch+Autodesk+Fusion&device_theme=light">View
+                                    Model →</a>
+                            </div>
+                            <div class="car-card">
+                                <img src="automatta.png" class="cad">
+                                <h3 class="card-title">Automatta Project</h3>
+                                <p class="card-desc1">Designed and simulated a mechanical system in Fusion 360,
+                                    utilizing various cams and rods to turn rotational input into vertical movement.
+                                </p>
+                                <a class="card-link"
+                                    href="https://fusion.online.autodesk.com/webapp?submit_button=Launch+Autodesk+Fusion&device_theme=light">View
+                                    Model →</a>
+                            </div>
+                            <div class="car-card">
+                                <img src="chestboard.png" class="cad">
+                                <h3 class="card-title">Halloween Chessboard</h3>
+                                <p class="card-desc1">Architected an CAD assembly by utilizing form creation to
+                                    develop a cohesive series of custom chess pieces and a chessboard.</p>
+                                <a class="card-link"
+                                    href="https://fusion.online.autodesk.com/webapp?submit_button=Launch+Autodesk+Fusion&device_theme=light">View
+                                    Repo →</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="car-dots" id="car-dots">
+                        <button class="cdot active" data-idx="0"></button>
+                        <button class="cdot" data-idx="1"></button>
+                        <button class="cdot" data-idx="2"></button>
+                        <button class="cdot" data-idx="3"></button>
+                        <button class="cdot" data-idx="4"></button>
+                        <button class="cdot" data-idx="5"></button>
+                    </div>
+                </div>
+
+                <!-- VITALS TAB -->
+                <div class="tab-panel" id="tab-vitals">
+                    <div class="panel-title">◈ ENTITY VITALS — Live Readout</div>
+                    <div class="vitals-hud">
+                        <div class="corner tl"></div>
+                        <div class="corner tr"></div>
+                        <div class="corner bl"></div>
+                        <div class="corner br"></div>
+                        <div class="vital-hdr">
+                            <span>ENTITY VITALS — LIVE READOUT</span>
+                            <span id="vtime">––:––</span>
+                        </div>
+                        <div class="vrow">
+                            <div class="vmeta"><span class="vname">▮ Experience</span><span class="vval">1.5+ Years
+                                    Active</span></div>
+                            <div class="vtrack">
+                                <div class="vfill" data-w="55"></div>
+                            </div>
+                            <div class="vnote">// Accumulated field time — multiple environments</div>
+                        </div>
+                        <div class="vrow">
+                            <div class="vmeta"><span class="vname">▮ Bandwidth</span><span class="vval">Capacity:
+                                    HIGH</span></div>
+                            <div class="vtrack">
+                                <div class="vfill" data-w="88"></div>
+                            </div>
+                            <div class="vnote">// Currently available for new projects and collabs</div>
+                        </div>
+                        <div class="vrow">
+                            <div class="vmeta"><span class="vname">▮ Skill Load</span><span
+                                    class="vval">Operational</span></div>
+                            <div class="vtrack">
+                                <div class="vfill" data-w="80"></div>
+                            </div>
+                            <div class="vnote">// JS / Java / HTML / CSS / Python / CAD</div>
+                        </div>
+                        <div class="vrow" style="margin-bottom:0">
+                            <div class="vmeta"><span class="vname">▮ Availability</span><span class="vval">OPEN</span>
+                            </div>
+                            <div class="vtrack">
+                                <div class="vfill" data-w="95"></div>
+                            </div>
+                            <div class="vnote">// Accepting new missions — signal to establish contact</div>
                         </div>
                     </div>
 
-                    <!-- PROJECTS TAB -->
-                    <div class="tab-panel" id="tab-projects">
-                        <div class="panel-title">◈ NATIVE LIFE — Discovered Specimens</div>
-                        <div class="carousel-wrap">
-                            <div class="car-stage">
-                                <div class="car-card">
-                                    <img src="project1.png" class="code">
-                                    <h3 class="card-title">Math Recovery Project</h3>
-                                    <p class="card-desc">As the internship’s first coding project, I built a website raising awareness about Perry Meridian middle schoolers failing math due to COVID-19 learning disruptions.<p>
-                                    <div class="card-badges">
-                                        <span class="cbadge">HTML</span>
-                                        <span class="cbadge">CSS</span>
-                                    </div>
-                                    <a class="card-link"
-                                        href="http://127.0.0.1:3002/c:/Users/Nextech/cataplt/int-u3-project-23-24-starter-code/index.html?vscode-livepreview=truehttp://127.0.0.1:3002/c:/Users/Nextech/cataplt/int-u2-project-starter-code-3/index.html?vscode-livepreview=true">View
-                                        Repo →</a>
-                                </div>
-                                <div class="car-card">
-                                    <img src='project2.png' class="code">
-                                    <h3 class="card-title">World Cup Simulator</h3>
-                                    <p class="card-desc">For my second project, I utilized HTML, CSS, and JavaScript to build a “choose your own adventure” World Cup simulator that allows users to guide their team through the World Cup finals.</p>
-                                    <div class="card-badges">
-                                        <span class="cbadge">HTML</span>
-                                        <span class="cbadge">CSS</span>
-                                        <span class="cbadge">JavaScript</span>
-                                    </div>
-                                    <a class="card-link"
-                                        href="http://127.0.0.1:3002/c:/Users/Nextech/cataplt/int-u3-project-23-24-starter-code/index.html?vscode-livepreview=true">View
-                                        Repo →</a>
-                                </div>
-                                <div class="car-card">
-                                    <img src="flood watch.png" class="code">
-                                    <h3 class="card-title">AI Capstone Project</h3>
-                                    <p class="card-desc">Engineered a machine learning capstone project in collaboration with Inspirit AI, developing a predictive model to classify real-world precipitation rates for seamless routing integration.</p>
-                                    <div class="card-badges">
-                                        <span class="cbadge">Python</span>
-                                        <span class="cbadge">ML</span>
-                                        <span class="cbadge">API</span>
-                                    </div>
-                                    <a class="card-link" href="https://fc77b13c8bafac4a02.gradio.live/">View Repo →</a>
-                                </div>
-                                <div class="car-card">
-                                    <img src="city.png" class="cad">
-                                    <h3 class="card-title">Sustainable City Project</h3>
-                                    <p class="card-desc">Designed an eco-city in Fusion 360, integrating high-density skyscrapers with renewable energy and rooftop agriculture.</p>
-                                    <div class="card-badges">
-                                    </div>
-                                    <a class="card-link" href="#">View Model →</a>
-                                </div>
-                                <div class="car-card">
-                                    <img src="automatta.png" class="cad">
-                                    <h3 class="card-title">Automatta Project</h3>
-                                    <p class="card-desc">Designed and simulated a mechanical system in Fusion 360, utilizing various cams and rods to turn rotational input into vertical movement.</p>
-                                    <div class="card-badges">
-                                    </div>
-                                    <a class="card-link" href="#">View Model →</a>
-                                </div>
-                                <div class="car-card">
-                                    <img src="chestboard.png" class="cad">
-                                    <h3 class="card-title">Halloween Chessboard</h3>
-                                    <p class="card-desc">Architected an intricate CAD assembly by utilizing form creation, lofting, and filleting to develop a cohesive series of custom thematic geometries optimized for independent stability.</p>
-                                    <div class="card-badges">
-                                    </div>
-                                    <a class="card-link" href="#">View Repo →</a>
+                    <p class="exp-title">MISSION LOG — Experience</p>
+                    <div class="exp-log">
+                        <div class="log-row">
+                            <div class="log-t">2026–<br>PRESENT</div>
+                            <div>
+                                <div class="log-role">Nextech Catapult</div>
+                                <div class="log-place">Internship</div>
+                                <div class="log-desc">This program bridges the gap between high school and higher
+                                    education by providing coding lessons, career exploration, and college exposure.
                                 </div>
                             </div>
                         </div>
-                        <div class="car-dots" id="car-dots">
-                            <button class="cdot active" data-idx="0"></button>
-                            <button class="cdot" data-idx="1"></button>
-                            <button class="cdot" data-idx="2"></button>
-                            <button class="cdot" data-idx="3"></button>
-                            <button class="cdot" data-idx="4"></button>
-                            <button class="cdot" data-idx="5"></button>
+                        <div class="log-row">
+                            <div class="log-t">2025–26</div>
+                            <div>
+                                <div class="log-role">AP Computer Science A</div>
+                                <div class="log-place">AP Classroom</div>
+                                <div class="log-desc">Java-based programming, algorithms, and object-oriented
+                                    fundamentals.</div>
+                            </div>
+                        </div>
+                        <div class="log-row">
+                            <div class="log-t">2025–26</div>
+                            <div>
+                                <div class="log-role">AI Capstone Project</div>
+                                <div class="log-place">Inspirit AI</div>
+                                <div class="log-desc">Built and trained a real ML model to solve a classification
+                                    problem.</div>
+                            </div>
+                        </div>
+                        <div class="log-row">
+                            <div class="log-t">2025–26</div>
+                            <div>
+                                <div class="log-role">Principles of Engineering</div>
+                                <div class="log-place">POE / PLTW</div>
+                                <div class="log-desc">CAD design, physical prototyping, and engineering
+                                    problem-solving.</div>
+                            </div>
+                        </div>
+                        <div class="log-row">
+                            <div class="log-t">2025</div>
+                            <div>
+                                <div class="log-role">Intro to CS</div>
+                                <div class="log-place">Indiana Online</div>
+                                <div class="log-desc">Where it started. The foundation of everything after.</div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- VITALS TAB -->
-                    <div class="tab-panel" id="tab-vitals">
-                        <div class="panel-title">◈ ENTITY VITALS — Live Readout</div>
-                        <div class="vitals-hud">
-                            <div class="corner tl"></div>
-                            <div class="corner tr"></div>
-                            <div class="corner bl"></div>
-                            <div class="corner br"></div>
-                            <div class="vital-hdr">
-                                <span>ENTITY VITALS — LIVE READOUT</span>
-                                <span id="vtime">––:––</span>
-                            </div>
-                            <div class="vrow">
-                                <div class="vmeta"><span class="vname">▮ Experience</span><span class="vval">1.5+ Years
-                                        Active</span></div>
-                                <div class="vtrack">
-                                    <div class="vfill" data-w="55"></div>
-                                </div>
-                                <div class="vnote">// Accumulated field time — multiple environments</div>
-                            </div>
-                            <div class="vrow">
-                                <div class="vmeta"><span class="vname">▮ Bandwidth</span><span class="vval">Capacity:
-                                        HIGH</span></div>
-                                <div class="vtrack">
-                                    <div class="vfill" data-w="88"></div>
-                                </div>
-                                <div class="vnote">// Currently available for new projects and collabs</div>
-                            </div>
-                            <div class="vrow">
-                                <div class="vmeta"><span class="vname">▮ Skill Load</span><span
-                                        class="vval">Operational</span></div>
-                                <div class="vtrack">
-                                    <div class="vfill" data-w="80"></div>
-                                </div>
-                                <div class="vnote">// JS / Java / HTML / CSS / Python / CAD</div>
-                            </div>
-                            <div class="vrow" style="margin-bottom:0">
-                                <div class="vmeta"><span class="vname">▮ Availability</span><span
-                                        class="vval">OPEN</span></div>
-                                <div class="vtrack">
-                                    <div class="vfill" data-w="95"></div>
-                                </div>
-                                <div class="vnote">// Accepting new missions — signal to establish contact</div>
-                            </div>
-                        </div>
+                    <p class="exp-title" style="margin-top:20px">TOOLKIT — Loaded Modules</p>
+                    <div class="chips">
+                        <span class="chip">JavaScript</span><span class="chip">Java</span>
+                        <span class="chip">Python</span><span class="chip">HTML</span>
+                        <span class="chip">CSS</span><span class="chip">API</span>
+                        <span class="chip">Fusion 360</span><span class="chip">OnShape</span>
+                        <span class="chip">GitHub</span>
+                    </div>
+                </div>
 
-                        <p class="exp-title">MISSION LOG — Experience</p>
-                        <div class="exp-log">
-                            <div class="log-row">
-                                <div class="log-t">2026–<br>PRESENT</div>
-                                <div>
-                                    <div class="log-role">Nextech Catapult</div>
-                                    <div class="log-place">Internship</div>
-                                    <div class="log-desc">This program bridges the gap between high school and higher
-                                        education by providing coding lessons, career exploration, and college exposure.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="log-row">
-                                <div class="log-t">2025–26</div>
-                                <div>
-                                    <div class="log-role">AP Computer Science A</div>
-                                    <div class="log-place">AP Classroom</div>
-                                    <div class="log-desc">Java-based programming, algorithms, and object-oriented
-                                        fundamentals.</div>
-                                </div>
-                            </div>
-                            <div class="log-row">
-                                <div class="log-t">2025–26</div>
-                                <div>
-                                    <div class="log-role">AI Capstone Project</div>
-                                    <div class="log-place">Inspirit AI</div>
-                                    <div class="log-desc">Built and trained a real ML model to solve a classification
-                                        problem.</div>
-                                </div>
-                            </div>
-                            <div class="log-row">
-                                <div class="log-t">2025–26</div>
-                                <div>
-                                    <div class="log-role">Principles of Engineering</div>
-                                    <div class="log-place">POE / PLTW</div>
-                                    <div class="log-desc">CAD design, physical prototyping, and engineering
-                                        problem-solving.</div>
-                                </div>
-                            </div>
-                            <div class="log-row">
-                                <div class="log-t">2025</div>
-                                <div>
-                                    <div class="log-role">Intro to CS</div>
-                                    <div class="log-place">Indiana Online</div>
-                                    <div class="log-desc">Where it started. The foundation of everything after.</div>
-                                </div>
-                            </div>
+                <!-- CONTACT TAB -->
+                <div class="tab-panel" id="tab-contact">
+                    <div class="panel-title">◈ TRANSMIT — Open Comms</div>
+                    <div class="contact-wrap">
+                        <div class="beacon-ring-wrap">
+                            <div class="ring-anim"></div>
+                            BEACON ACTIVE — ACCEPTING TRANSMISSIONS
                         </div>
-
-                        <p class="exp-title" style="margin-top:20px">TOOLKIT — Loaded Modules</p>
-                        <div class="chips">
-                            <span class="chip">JavaScript</span><span class="chip">Java</span>
-                            <span class="chip">Python</span><span class="chip">HTML</span>
-                            <span class="chip">CSS</span><span class="chip">API</span>
-                            <span class="chip">Fusion 360</span><span class="chip">OnShape</span>
-                            <span class="chip">GitHub</span>
-                        </div>
+                        <h2 class="contact-head">Ready to surface?<br>Send a signal.</h2>
+                        <p class="contact-sub">Open comms. Drop coordinates below<br>and I'll respond within one
+                            cycle.</p>
                     </div>
 
-                    <!-- CONTACT TAB -->
-                    <div class="tab-panel" id="tab-contact">
-                        <div class="panel-title">◈ TRANSMIT — Open Comms</div>
-                        <div class="contact-wrap">
-                            <div class="beacon-ring-wrap">
-                                <div class="ring-anim"></div>
-                                BEACON ACTIVE — ACCEPTING TRANSMISSIONS
-                            </div>
-                            <h2 class="contact-head">Ready to surface?<br>Send a signal.</h2>
-                            <p class="contact-sub">Open comms. Drop coordinates below<br>and I'll respond within one
-                                cycle.</p>
-                        </div>
-
-                        <div id="cf-form">
-                            <div class="cf">
-                                <div class="cf-row">
-                                    <div class="cf-field">
-                                        <label class="cf-lbl">// Designation (Name)</label>
-                                        <input class="cf-input" type="text" placeholder="Your name" id="fn">
-                                    </div>
-                                    <div class="cf-field">
-                                        <label class="cf-lbl">// Frequency (Email)</label>
-                                        <input class="cf-input" type="email" placeholder="your@email.com" id="fe">
-                                    </div>
+                    <div id="cf-form">
+                        <div class="cf">
+                            <div class="cf-row">
+                                <div class="cf-field">
+                                    <label class="cf-lbl">// Designation (Name)</label>
+                                    <input class="cf-input" type="text" placeholder="Your name" id="fn">
                                 </div>
                                 <div class="cf-field">
-                                    <label class="cf-lbl">// Subject Line</label>
-                                    <input class="cf-input" type="text" placeholder="What's this about?" id="fs">
+                                    <label class="cf-lbl">// Frequency (Email)</label>
+                                    <input class="cf-input" type="email" placeholder="your@email.com" id="fe">
                                 </div>
-                                <div class="cf-field">
-                                    <label class="cf-lbl">// Message Payload</label>
-                                    <textarea class="cf-area" placeholder="Transmit your message here..."
-                                        id="fm"></textarea>
-                                </div>
-                                <div class="cf-status" id="cf-status"></div>
-                                <button class="send-btn" id="send-btn">◈ Broadcast Signal</button>
                             </div>
-                        </div>
-
-                        <div class="signal-success" id="success-msg">
-                            <div class="success-ring">◈</div>
-                            <div class="success-title">Signal Received</div>
-                            <div class="success-sub">Transmission logged. Response incoming.</div>
-                        </div>
-
-                        <div class="ext-links">
-                            <a class="ext-link" href="https://github.com/oliviashewmaker1222" target="_blank">GitHub</a>
-                            <a class="ext-link" href="https://www.linkedin.com/in/olivia-shewmaker-84395b3a8"
-                                target="_blank">LinkedIn</a>
-                            <a class="ext-link" href="mailto:oliviashewmaker@gmail.com">◈ oliviashewmaker@gmail.com</a>
+                            <div class="cf-field">
+                                <label class="cf-lbl">// Subject Line</label>
+                                <input class="cf-input" type="text" placeholder="What's this about?" id="fs">
+                            </div>
+                            <div class="cf-field">
+                                <label class="cf-lbl">// Message Payload</label>
+                                <textarea class="cf-area" placeholder="Transmit your message here..."
+                                    id="fm"></textarea>
+                            </div>
+                            <div class="cf-status" id="cf-status"></div>
+                            <button class="send-btn" id="send-btn">◈ Broadcast Signal</button>
                         </div>
                     </div>
 
+                    <div class="signal-success" id="success-msg">
+                        <div class="success-ring">◈</div>
+                        <div class="success-title">Signal Received</div>
+                        <div class="success-sub">Transmission logged. Response incoming.</div>
+                    </div>
+
+                    <div class="ext-links">
+                        <a class="ext-link" href="https://github.com/oliviashewmaker1222" target="_blank">GitHub</a>
+                        <a class="ext-link" href="https://www.linkedin.com/in/olivia-shewmaker-84395b3a8"
+                            target="_blank">LinkedIn</a>
+                        <a class="ext-link" href="mailto:oliviashewmaker@gmail.com">◈ oliviashewmaker@gmail.com</a>
+                    </div>
+                </div>
+
+                <!-- SOURCES TAB -->
+                <div class="tab-panel" id="tab-sources">
+                    <div class="panel-title">◈ REFERENCES — Signal Sources</div>
+                    <p class="panel-note">// Databanks used to chart this course</p>
+
+                    <div class="scan-grid">
+
+                        <div class="scan-item unlocked">
+                            <div class="scan-circle">
+                                <span class="scan-icon">🌐</span>
+                                <div class="scan-ring"></div>
+                            </div>
+                            <div class="scan-label">// SRC 001 — W3Schools</div>
+                            <div class="scan-body">
+                                <div class="scan-real">Reference and tutorials for HTML, CSS, and JavaScript
+                                    fundamentals used throughout this build.</div>
+                            </div>
+                            <a class="card-link" href="https://www.w3schools.com" target="_blank"
+                                style="margin-top:auto;width:100%;">Visit Source →</a>
+                        </div>
+
+                        <div class="scan-item unlocked">
+                            <div class="scan-circle">
+                                <span class="scan-icon">💻</span>
+                                <div class="scan-ring"></div>
+                            </div>
+                            <div class="scan-label">// SRC 002 — GeeksforGeeks</div>
+                            <div class="scan-body">
+                                <div class="scan-real">Additional reference for algorithms, data structures, and
+                                    troubleshooting logic across projects.</div>
+                            </div>
+                            <a class="card-link" href="https://www.geeksforgeeks.org" target="_blank"
+                                style="margin-top:auto;width:100%;">Visit Source →</a>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <!-- EASTER EGG: REAPER LEVIATHAN -->
@@ -451,7 +508,6 @@
             <div id="lev-title">REAPER LEVIATHAN DETECTED</div>
             <div id="lev-sub">// Creature class: LEVIATHAN<br>// Threat level: CRITICAL<br>// Recommendation: SWIM
                 FASTER<br><br>// You found the easter egg. Respect.</div>
-            <div id="lev-code">[ ↑↑↓↓←→←→BA ]</div>
             <button id="lev-close">◈ DIVE BACK DOWN</button>
         </div>
     </div>

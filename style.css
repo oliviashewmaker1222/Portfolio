@@ -1,4 +1,4 @@
-/* ── RESET & BASE ── */
+
 *,
 *::before,
 *::after {
@@ -766,6 +766,7 @@ body{
   width: 100%;
   flex: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -793,6 +794,29 @@ body{
 .scan-item.unlocked .scan-real {
   display: block;
 }
+
+.scanned-image {
+  display: block;
+  clear: both;
+  width: 200px;         
+  height: 150px; 
+  flex-basis: 100%;       
+  object-fit: cover;    
+  margin-top: 10px;      
+  border-radius: 4px;    
+  border: 1px solid rgba(255, 255, 255, 0.2); 
+  opacity: 0;
+  transform: translateY(5px);
+  animation: imgFadeIn 0.4s ease forwards;
+}
+
+@keyframes imgFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 .scan-hint {
   font-size: 11px;
@@ -919,6 +943,14 @@ body{
   color: rgba(0, 200, 230, .75);
   line-height: 1.75;
   flex: 1;
+}
+
+.card-desc1 {
+  font-size: 14px;
+  color: rgba(0, 200, 230, .75);
+  line-height: 1.75;
+  flex: 1;
+  margin-bottom: 26px;
 }
 
 .card-badges {
