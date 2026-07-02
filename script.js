@@ -251,7 +251,7 @@ document.addEventListener("DOMContentLoaded", () => {
         img.src = imgSrc;
         img.className = "scanned-image";
         img.alt = "Scanned Data";
-        
+
         scanBody.appendChild(img);
       }
 
@@ -304,12 +304,39 @@ document.addEventListener("DOMContentLoaded", () => {
   startAuto();
 
   /* ══════════════════════════════════════
-   CONTACT FORM — Web3Forms
+ CONTACT FORM — Formspree
 ══════════════════════════════════════ */
-  const WEB3FORMS_ACCESS_KEY = "5896b196-65ea-450a-8ac7-419bf106e5a1";
 
   const sendBtn = document.getElementById("send-btn");
   const cfStatus = document.getElementById("cf-status");
+  const sendAnotherBtn = document.getElementById("send-another-btn");
+
+  function resetContactForm() {
+    // Clear the input values
+    ["fn", "fe", "fs", "fm"].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.value = "";
+    });
+
+    // Clear any leftover status text/error styling
+    if (cfStatus) {
+      cfStatus.textContent = "";
+      cfStatus.className = "cf-status";
+    }
+
+    // Re-enable the send button in case it was left disabled
+    if (sendBtn) sendBtn.disabled = false;
+
+    // Swap views back: hide success, show the form
+    const actualFormFields = document.querySelector(".cf");
+    const successMsg = document.getElementById("success-msg");
+    if (successMsg) successMsg.style.display = "none";
+    if (actualFormFields) actualFormFields.style.display = "flex";
+  }
+
+  if (sendAnotherBtn) {
+    sendAnotherBtn.addEventListener("click", resetContactForm);
+  }
 
   if (sendBtn) {
     sendBtn.addEventListener("click", async (e) => {
@@ -347,11 +374,13 @@ document.addEventListener("DOMContentLoaded", () => {
       cfStatus.className = "cf-status";
 
       try {
-        const response = await fetch("https://api.web3forms.com/submit", {
+        const response = await fetch("https://formspree.io/f/mnjkgrwb", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
           body: JSON.stringify({
-            access_key: WEB3FORMS_ACCESS_KEY,
             name: name,
             email: email,
             subject: subject || "(no subject)",
@@ -359,42 +388,41 @@ document.addEventListener("DOMContentLoaded", () => {
           }),
         });
 
-        const data = await response.json();
-
-        if (response.ok && data.success) {
+        if (response.ok) {
           const actualFormFields = document.querySelector(".cf");
           const successMsg = document.getElementById("success-msg");
           if (actualFormFields) actualFormFields.style.display = "none";
           if (successMsg) successMsg.style.setProperty("display", "flex", "important");
           if (cfStatus) cfStatus.textContent = "";
+          sendBtn.disabled = false;   // ← re-enable now, so it's ready the next time the form shows
         } else {
-          throw new Error(data.message || "Unknown error");
+          const data = await response.json();
+          throw new Error(data.errors?.[0]?.message || "Unknown error");
         }
 
       } catch (err) {
-        console.error("Web3Forms error:", err);
+        console.error("Formspree error:", err);
         cfStatus.textContent = "// Transmission failed — try oliviashewmaker@gmail.com directly";
         cfStatus.className = "cf-status error";
         sendBtn.disabled = false;
       }
     });
   }
+  /* ══════════════════════════════════════
+   LIFEPOD PARALLAX — 
+  ══════════════════════════════════════ */
+  document.addEventListener("mousemove", (e) => {
+    if (!lifepod || lifepod.style.display === "none" || lifepod.style.display === "") return;
 
-/* ══════════════════════════════════════
- LIFEPOD PARALLAX — 
-══════════════════════════════════════ */
-document.addEventListener("mousemove", (e) => {
-  if (!lifepod || lifepod.style.display === "none" || lifepod.style.display === "") return;
+    if (invOverlay.classList.contains("open")) {
+      lifepod.style.transform = "scale(1.1) rotateY(0deg)";
+      return;
+    }
 
-  if (invOverlay.classList.contains("open")) {
-    lifepod.style.transform = "scale(1.1) rotateY(0deg)";
-    return;
-  }
+    const xPct = (e.clientX / window.innerWidth - 0.5) * 2;
 
-  const xPct = (e.clientX / window.innerWidth - 0.5) * 2;
-
-  lifepod.style.transform = `scale(1.1) rotateY(${xPct * 6}deg)`;
-  lifepod.style.backgroundPosition = `${50 + xPct * -3}% 50%`;
-});
+    lifepod.style.transform = `scale(1.1) rotateY(${xPct * 6}deg)`;
+    lifepod.style.backgroundPosition = `${50 + xPct * -3}% 50%`;
+  });
 
 });
